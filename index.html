@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz Me!</title>
+	<meta charset=utf-8>
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="manifest.json">
+	<meta name="msapplication-TileColor" content="#FFB300">
+	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+	<meta name="theme-color" content="#FFB300">
+	<link rel="stylesheet" type="text/css" href="https://jabont.com/jayss/jayss.css">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Mitr:400,600" rel="stylesheet"> -->
+	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://jabont.com/jayss/jayss-custom.php?ggfont=Mitr&font=333&bg=fff&cl=4527A0,5E35B1,7E57C2"> -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="bg-smoke">
+	<!--=== The Section Boxes : welcome ===-->
+	<section id="welcome_section" class="padding-l-vtc">
+		<anchor id="welcome"></anchor>
+		<div class="cont-pd">
+			<img src="logo.png" class="logo">
+			<h1 class="cl-amber t-center h4 title">Quiz Me!</h1>
+			<sp class=""></sp>
+			<p>
+				ตัวช่วยการทำควิสของคุณ เพียงใส่คำถามไว้ในบรรทัดแรก ตามด้วยคำตอบที่ถูกต้องในบรรทัดต่อมา และชอยส์ (คำตอบที่ผิด) ในบรรทัดอื่นๆ จากนั้นเว้นบรรทัดเปล่า 1 บรรทัดระหว่างแต่ละข้อ แล้วมาทำควิสเพื่อทบทวนกันเลย~
+			</p>
+			<sp class=""></sp>
+			<textarea rows="10" id="allQ">
+ดาวเคราะห์ลำดับที่ 3 ของระบบสุริยะจักวาลคือดาวอะไร
+ดาวโลก
+ดาวอังคาร
+ดาวพุธ
+ดาวเนปจูน
+
+กาแล็กซี่ใดเป็นที่ตั้งของระบบสุริยะจักวาล
+ทางช้างเผือก
+แอนโดรเมดา
+
+แสงอาทิตย์ใช้เวลาประมาณเท่าไหร่ในการเดินทางมาถึงโลก
+8 นาที
+24 ชั่วโมง
+15 วินาที
+1 ปีแสง (..เป็นระยะทาง)
+
+อะไรใหญ่กว่าระบบสุริยะจักรวาล
+ภัตตาคารที่ขายระบบสุริยะจักรวาลชุบแป้งทอด
+ระบบสุริยะจักรวาลชุบแป้งทอด
+กระทะระบบสุริยะจักรวาลชุบแป้งทอด
+ห้องครัวทำระบบสุริยะจักรวาลชุบแป้งทอด
+
+จากตัวเลือกดังต่อไปนี้ คุณคิดว่าบริเวณใดในเอกภพที่ว่างเปล่าที่สุด
+อาจเป็นความรู้ในสมองของข้าพเจ้า
+กระจุกดาว
+ชั้นบรรยากาศโลก
+แถบไคเปอร์
+</textarea>
+			<sp class=""></sp>
+			<div class="btn wide t-center" onclick="start()">Go Quiz!</div>
+		</div>
+	</section>
+
+	<!--=== The Section Boxes : quize ===-->
+	<section id="quize_section" class="padding-xl-vtc">
+		<anchor id="quize"></anchor>
+		<div class="cont-pd">
+			<h4>ข้อที่ <span id="theSec"></span>/<span id="theAllSec"></span></h4>
+			<h2 id="theQ"></h2>
+			<sp class=""></sp>
+			<theboxes class="top spacing -clip" boxing="1" id="theAC">
+			</theboxes>
+		</div>
+	</section>
+
+	<!--=== The Section Boxes : result ===-->
+	<section id="result_section" class="padding-l-vtc t-center">
+		<anchor id="result"></anchor>
+		<div class="cont-pd">
+			<h1>Result</h1>
+			<sp class=""></sp>
+			<div id="lastScore"></div>
+			<theboxes class="top spacing -clip from-bottom t-left b7" id="otherScore" boxing="1" mob="1">
+			</theboxes>
+			<sp class="l"></sp>
+			<div class="btn wide size-l t-center" onclick="start()">Try again!</div>
+			<sp class="l"></sp>
+			<div class="cl-red-7" onclick="location.href=location.href">สร้างควิสใหม่</div>
+		</div>
+	</section>
+
+
+	<script>
+		let now = 0;
+		let form = [];
+		let result = [];
+		let qBySec = [];
+		let user = '';
+
+		function start(){
+			if (form.length == 0) {
+				let theAllQ = allQ.value.split('\n\n');
+				for (let i of theAllQ) {
+					qBySec.push(i);
+				}
+				for (let i of qBySec) {
+					let txt = i.split('\n');
+					let q = '';
+					let a = '';
+					let c = [];
+					console.log(txt[2]);
+					for (var line = 2; line < txt.length; line++) {
+						console.log(txt[line]);
+						if (txt[line].replace(/ /g,'') != '') {
+							c.push(txt[line]);
+						}
+					}
+					form.push({q:txt[0],a:txt[1],c:c,score:0});
+				}
+			}
+			quize_section.style.display="block";
+			welcome_section.style.display = "none";
+			result_section.style.display = "none";
+			renderQuize();
+		}
+		function renderQuize(){
+			if (now == form.length) {
+				end();
+			}
+			else{
+				theQ.innerText = form[now].q;
+				theSec.innerText = now+1;
+				theAllSec.innerText = form.length;
+				let theACtxt = ``;
+				for(let i of form[now].c){
+					theACtxt += `
+					<box col="" style="order:${rand()}"><inner onclick="select(0,this)" class="ac ac2 bg-white padding round shadow">
+					${i}
+					</inner></box>`;
+				}
+				theACtxt += `
+				<box col="" style="order:${rand()}"><inner onclick="select(1,this)" class="ac ac2 bg-white padding round shadow">
+				${form[now].a}
+				</inner></box>`
+				theAC.innerHTML = theACtxt;
+				now++;
+			}
+		}
+
+		function end(){
+			quize_section.style.display = "none";
+			result_section.style.display = "block";
+			user = prompt("ระบุชื่อของคุณ",user);
+			let score = 0; 
+			let txt = ``;
+			for (let i of form) {
+				score += i.score;
+			}
+			result.push({"user":user,"score":score});
+			now = 0;
+			for (let i=0;i<result.length;i++) {
+				if (i==result.length-1) {
+					lastScore.innerHTML = `
+					<h2 class='h5'>${result[i].user}</h2>
+					<h2 class='h1'>${result[i].score}/${form.length}</h2>
+					`;
+				}
+				else{
+					txt += `
+					<box col=""><inner class="padding bg-white round">
+					<theboxes class="top spacing -clip" boxing="2" mob="2">
+					<box col=""><inner class="">
+					${result[i].user}
+					</inner></box>
+					<box col=""><inner class="t-right">
+					${result[i].score}/${form.length}
+					</inner></box>
+					</theboxes>
+					</inner></box>
+					`
+				}
+			}
+			otherScore.innerHTML = txt;
+		}
+
+		function rand(){
+			return Math.floor(Math.random()*10);
+		}
+		function select(score,el){
+			form[now-1].score = score;
+			if (score) {
+				el.classList.add('cl-white');
+				el.classList.add('bg-lightgreen-6');
+			}else{
+				el.classList.add('cl-white');
+				el.classList.add('bg-red-a4');
+			}
+			el.classList.add('blink');
+			let allAC = document.querySelectorAll('.ac2');
+			for (let k of allAC) {
+				k.setAttribute('onclick','');
+				k.classList.remove('ac');
+			}
+			setTimeout(()=>{
+				renderQuize();
+			},500);
+		}
+	</script>
+
+
+</body>
+</html>
